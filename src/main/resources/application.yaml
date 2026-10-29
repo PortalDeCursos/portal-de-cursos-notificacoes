@@ -1,3 +1,29 @@
 spring:
   application:
     name: notificacao
+  config:
+    import: optional:file:.env[.properties]
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+server:
+  port: ${SERVER_PORT:8083}
+
+envio:
+  email:
+    remetente: ${MAIL_USERNAME}
+    nomeRemetente: ${MAIL_SENDER_NAME:Portal de Cursos}
