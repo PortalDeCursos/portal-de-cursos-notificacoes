@@ -27,3 +27,6 @@ envio:
   email:
     remetente: ${MAIL_USERNAME}
     nomeRemetente: ${MAIL_SENDER_NAME:Portal de Cursos}
+
+portal:
+  submissao-url: "${PORTAL_SUBMISSAO_URL:#}"

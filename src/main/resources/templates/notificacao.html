@@ -13,9 +13,9 @@
             <table role="presentation" width="600" cellpadding="0" cellspacing="0"
                    style="max-width:600px; width:100%; background-color:#ffffff; border-radius:16px;">
 
-                <!-- Cabeçalho -->
+                <!-- Cabeçalho centralizado -->
                 <tr>
-                    <td style="padding:32px 40px 20px 40px; border-bottom:1px solid #e6ecf5;">
+                    <td align="center" style="padding:32px 40px 20px 40px; border-bottom:1px solid #e6ecf5; text-align:center;">
                         <span style="font-size:26px; font-weight:bold; color:#0b1220;">Portal de </span><span
                             style="font-size:26px; font-weight:bold; color:#0a4de0;">Cursos</span>
                     </td>
@@ -51,7 +51,7 @@
 
                 <!-- Resumo do projeto -->
                 <tr>
-                    <td style="padding:28px 40px 36px 40px;">
+                    <td style="padding:28px 40px 8px 40px;">
                         <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
                                style="background-color:#f4f7fd; border-radius:12px;">
                             <tr>
@@ -62,20 +62,50 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width="30%" style="padding:12px 24px; font-size:14px; font-weight:bold; color:#5b6784; border-bottom:1px solid #e1e8f3;">
+                                <td width="35%" style="padding:12px 24px; font-size:14px; font-weight:bold; color:#5b6784; border-bottom:1px solid #e1e8f3;">
                                     Projeto
                                 </td>
                                 <td style="padding:12px 24px; font-size:15px; color:#0b1220; border-bottom:1px solid #e1e8f3;"
                                     th:text="${nomeProjeto}">Nome</td>
                             </tr>
                             <tr>
-                                <td width="30%" style="padding:12px 24px 20px 24px; font-size:14px; font-weight:bold; color:#5b6784;">
+                                <td width="35%" style="padding:12px 24px; font-size:14px; font-weight:bold; color:#5b6784; border-bottom:1px solid #e1e8f3;">
                                     Tipo
                                 </td>
-                                <td style="padding:12px 24px 20px 24px; font-size:15px; color:#0b1220;"
+                                <td style="padding:12px 24px; font-size:15px; color:#0b1220; border-bottom:1px solid #e1e8f3;"
                                     th:text="${tipoProjeto}">Tipo</td>
                             </tr>
+                            <tr>
+                                <td width="35%" style="padding:12px 24px; font-size:14px; font-weight:bold; color:#5b6784; border-bottom:1px solid #e1e8f3;">
+                                    Status
+                                </td>
+                                <td style="padding:12px 24px; font-size:15px; color:#0b1220; border-bottom:1px solid #e1e8f3;"
+                                    th:text="${titulo}">Status</td>
+                            </tr>
+                            <tr>
+                                <td width="35%" style="padding:12px 24px; font-size:14px; font-weight:bold; color:#5b6784; border-bottom:1px solid #e1e8f3;"
+                                    th:text="${rotuloResponsavel}">Enviado por</td>
+                                <td style="padding:12px 24px; font-size:15px; color:#0b1220; border-bottom:1px solid #e1e8f3;"
+                                    th:text="${nomeResponsavel}">Responsável</td>
+                            </tr>
+                            <tr>
+                                <td width="35%" style="padding:12px 24px 20px 24px; font-size:14px; font-weight:bold; color:#5b6784;">
+                                    Data e hora
+                                </td>
+                                <td style="padding:12px 24px 20px 24px; font-size:15px; color:#0b1220;"
+                                    th:text="${dataHora}">Data</td>
+                            </tr>
                         </table>
+                    </td>
+                </tr>
+
+                <!-- Botão -->
+                <tr>
+                    <td align="center" style="padding:28px 40px 36px 40px;">
+                        <a th:href="${linkSubmissao}" href="#"
+                           style="display:inline-block; background-color:#0a4de0; color:#ffffff; font-size:16px; font-weight:bold; text-decoration:none; padding:14px 40px; border-radius:8px;">
+                            Acessar Portal de Cursos
+                        </a>
                     </td>
                 </tr>
 

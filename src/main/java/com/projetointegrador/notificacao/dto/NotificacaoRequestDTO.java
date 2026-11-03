@@ -1,5 +1,6 @@
 package com.projetointegrador.notificacao.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetointegrador.notificacao.enums.StatusProjeto;
 import com.projetointegrador.notificacao.enums.TipoProjeto;
 import jakarta.validation.constraints.Email;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -32,4 +34,10 @@ public class NotificacaoRequestDTO {
     private List<@Email(message = "E-mail de destinatário inválido") String> destinatarios;
 
     private String justificativa;
+
+    @NotBlank(message = "O nome do responsável pela ação é obrigatório")
+    private String nomeResponsavel;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime dataHora;
 }
