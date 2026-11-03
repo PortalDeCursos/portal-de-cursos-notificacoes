@@ -1,10 +1,17 @@
 package com.projetointegrador.notificacao.enums;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum TipoProjeto {
 
-    TCC,
-    PROJETO_INTEGRADOR,
-    PROJETO_PESQUISA,
-    PROJETO_EXTENSAO,
-    OUTROS
+    TCC("TCC"),
+    PROJETO_INTEGRADOR("Projeto Integrador"),
+    PROJETO_PESQUISA("Projeto de Pesquisa"),
+    PROJETO_EXTENSAO("Projeto de Extensão"),
+    OUTROS("Outros");
+
+    private final String descricao;
 }

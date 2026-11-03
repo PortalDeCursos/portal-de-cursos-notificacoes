@@ -16,6 +16,8 @@ import org.thymeleaf.context.Context;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +31,9 @@ public class EmailService {
 
     @Value("${envio.email.nomeRemetente}")
     private String nomeRemetente;
+
+    @Value("${portal.submissao-url:#}")
+    private String linkSubmissao;
 
     public void enviaEmail(NotificacaoRequestDTO dto) {
 
@@ -44,8 +49,15 @@ public class EmailService {
             context.setVariable("titulo", montarAssunto(dto.getStatusProjeto()));
             context.setVariable("mensagem", montarMensagem(dto.getStatusProjeto()));
             context.setVariable("nomeProjeto", dto.getNomeProjeto());
-            context.setVariable("tipoProjeto", dto.getTipoProjeto());
+            context.setVariable("tipoProjeto", dto.getTipoProjeto().getDescricao());
             context.setVariable("justificativa", dto.getJustificativa());
+
+            LocalDateTime dataHora = dto.getDataHora() != null ? dto.getDataHora() : LocalDateTime.now();
+
+            context.setVariable("rotuloResponsavel", montarRotuloResponsavel(dto.getStatusProjeto()));
+            context.setVariable("nomeResponsavel", dto.getNomeResponsavel());
+            context.setVariable("dataHora", dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm")));
+            context.setVariable("linkSubmissao", linkSubmissao);
 
             String html = templateEngine.process("notificacao", context);
             helper.setText(html, true);
@@ -94,6 +106,20 @@ public class EmailService {
             case RECUSADO_PUBLICACAO -> "A publicação do projeto foi recusada pelo coordenador.";
 
             case REVISAO -> "O projeto precisa de revisão.";
+        };
+    }
+
+    private String montarRotuloResponsavel(StatusProjeto status) {
+
+        return switch (status) {
+
+            case EM_ANALISE, ANALISE_PUBLICACAO, REVISAO -> "Enviado por";
+
+            case APROVADO -> "Aprovado por";
+
+            case RECUSADO, RECUSADO_PUBLICACAO -> "Recusado por";
+
+            case PUBLICADO -> "Publicado por";
         };
     }
 }
