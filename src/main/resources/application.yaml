@@ -3,6 +3,8 @@ spring:
     name: notificacao
   config:
     import: optional:file:.env[.properties]
+  rabbitmq:
+    addresses: ${RABBITMQ_URL}
 
   mail:
     host: smtp.gmail.com
