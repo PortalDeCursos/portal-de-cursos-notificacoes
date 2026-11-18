@@ -34,3 +34,6 @@ envio:
 
 portal:
   submissao-url: "${PORTAL_SUBMISSAO_URL:#}"
+
+notificacao:
+  email-orientador-provisorio: ${EMAIL_ORIENTADOR_PROVISORIO}
