@@ -17,7 +17,6 @@ import java.util.List;
 public class NotificacaoProjetoService {
 
     private final EmailService emailService;
-    private final Destinario destinario;
 
     public void notificarProjetoSubmetido(ProjetoSubmetidoEvent evento) {
 
